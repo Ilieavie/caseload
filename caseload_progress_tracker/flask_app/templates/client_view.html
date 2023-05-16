@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>View Show</title>
+</head>
+
+<body>
+    <a href="/dashboard">Caseload List</a>
+    <a href="/logout">Log out</a>
+    <h1>{{client.first_name}}'s Information</h1>
+
+    <p>Full Name: {{client.first_name}} {{client.last_name}}</p>
+    <p>Case Number: {{client.id}}</p>
+    <p> Address: {{client.address}}</p>
+    <p> Diagnosis: {{client.diagnosis}}</p>
+    <p> Goals: {{client.goals}}</p>
+    <!-- not displaying goals but is in database -->
+    <!-- was not defined in models file -->
+    <p> Medications: {{client.medications}}</p>
+    <p>Assigned Case Manager: {{client.users_id}}</p> 
+    <!-- showing client first name instead of cm -->
+</body>
+
+</html>

@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard</title>
+</head>
+<body>
+    <h1> {{this_user.first_name}}'s' Caseload</h1>  
+    <h2>Clients:</h2>
+    <a href="/clients/new">+ Add New Client </a>
+    <a href="/logout">Log out</a>
+    <style>
+        table,
+        th,
+        td {
+            border: 1px solid;
+        }
+    </style>
+
+    <table style="margin:auto">
+        <thead>
+            <tr>
+                <th>Client's Name</th>
+                <th>Case #</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for client in clients %}
+            <tr>
+                <td>{{ client.first_name}} {{client.last_name}}</td>
+                <td>{{ client.id }}</td>
+                <td>
+                    <a href="/clients/{{client.id}}">View</a>
+                    {% if session['user_id'] == client.users_id %}
+                    <a href="/clients/edit/{{ client.id }}">Edit</a>
+                    <a href="/clients/destroy/{{ client.id }}">Delete</a>
+                    {% endif %}
+                </td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</body>
+</html>
